@@ -129,10 +129,6 @@ class WeatherForecast(BaseModel):
         daytime_periods = [p for p in self.properties.periods if p.isDaytime]
         return daytime_periods[1:days+1]
     
-    def get_next_week(self) -> List[ForecastPeriod]:
-        """Get forecasts for the next 7 days (daytime periods only)."""
-        return self.get_next_days(7)
-    
     def get_rain_chance_summary(self) -> str:
         """Get summary of precipitation chances for the next few days."""
         result = []
@@ -328,7 +324,26 @@ def get_weather_forecast_days(location: str, days: int = 3) -> str:
     
     return summary
 
+@tool 
+def get_weather_forecast_today(location: str) -> str:
+    """
+    Get weather forecast for today given a location.
+    Args:
+        location: the location
+    """
+    # fetchdata
+    lat, lon = get_lat_lon(location, GEOCODE_API_KEY)
+    forecast = get_weather_forecast(lat, lon)
+    return forecast.summary()
+
 if __name__ == "__main__":
 
-    agent = ToolCallingAgent(tools=[get_weather, get_weather_forecast_days], model=AI_MODEL)
-    print("ToolCallingAgent:", agent.run("What's the weather weather forecast for the next week in memphis tn?"))
+    agent = ToolCallingAgent(
+        tools=[
+            get_weather, 
+            get_weather_forecast_today, 
+            get_weather_forecast_days
+        ], 
+        model=AI_MODEL
+    )
+    print(agent.run("What's the weather for clarendon jamaica?"))
