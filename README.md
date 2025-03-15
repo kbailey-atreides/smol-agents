@@ -12,7 +12,7 @@ Agent for retrieving weather information.
 - `get_weather_forecast_today` - Get today's weather forecast for a location
 - `get_weather_forecast_days` - Get weather forecast for multiple days at a location
 
-### Akademiks Agent
+### Akademiks Agent - WIP
 Agent for retrieving information about DJ Akademiks' streams.
 
 **Tools:**
