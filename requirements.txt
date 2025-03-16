@@ -1,11 +1,15 @@
 annotated-types==0.7.0
 anyio==4.8.0
+attrs==25.3.0
 beautifulsoup4==4.13.3
 certifi==2025.1.31
 charset-normalizer==3.4.1
 click==8.1.8
 distro==1.9.0
+docker==7.1.0
 duckduckgo_search==7.5.2
+e2b==1.1.0
+e2b-code-interpreter==1.1.0
 filelock==3.18.0
 fsspec==2025.3.0
 h11==0.14.0
@@ -26,6 +30,7 @@ packaging==24.2
 pandas==2.2.3
 pillow==11.1.0
 primp==0.14.0
+protobuf==5.29.3
 pydantic==2.10.6
 pydantic_core==2.27.2
 Pygments==2.19.1
@@ -43,3 +48,5 @@ tqdm==4.67.1
 typing_extensions==4.12.2
 tzdata==2025.1
 urllib3==2.3.0
+smolagents[e2b]
+smolagents[openai]
